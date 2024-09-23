@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main()
+{
+	float M[2][2];float r_1,r_2,r;
+	cout << "Insert the value of the matrix\n";
+	for (int i=0;i<2;i++)
+	for (int j=0;j<2;j++)
+	cin >> M[i][j];
+	float det=M[0][0]*M[1][1]-M[1][0]*M[0][1];
+	float sum=0;
+	for (int i=0;i<2;i++)
+	sum+=M[i][i];//compute the trace
+	float b=sum,a=1,c=det;
+	float d=(b*b-4*a*c);
+	//obtaining the solution when the discriminant value is less than zero
+	if (d<0)
+	cout << "No Eigenvalues\nMatrix cannot be diagonalized";
+//obtaining the solution when the discriminant is greater than zero
+	else if (d>0) {
+	r_1=(-b+sqrt(d))/(2*a);
+	r_2=(-b-sqrt(d))/(2*a);
+	cout << "The Eigenvalues are\n" << r_1 << " " << r_2;
+	}
+	//obtaining the solution when the discriminant is equal to zero
+	else if (d==0) {
+		r=((-b)+sqrt(d))/(2*a);
+		cout << "The only Eigenvalue is " << r;
+	}
+	return 0;
+}
